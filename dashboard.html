@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PDSRU — Local Dashboard (demo)</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="wrap" style="padding:20px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px">
+      <div>
+  <h1 style="margin:0">PDSRU — Local dashboard (demo)</h1>
+        <div style="color:var(--muted)">Local demo dashboard served from your site</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <select id="dashDist"><option value="">All districts</option><option>Karachi South</option><option>Hyderabad</option><option>Sukkur</option></select>
+        <button id="dashReload" class="btn">Reload</button>
+      </div>
+    </div>
+
+    <div class="card" style="padding:16px;margin-bottom:18px">
+      <canvas id="mainChart" style="height:260px"></canvas>
+    </div>
+
+    <div class="card">
+      <div class="hd">Recent alerts</div>
+      <div class="bd">
+        <input id="tblFilter" type="text" placeholder="Filter alerts…" style="margin-bottom:12px" />
+        <div style="overflow:auto">
+          <table id="alertsTbl">
+            <thead><tr><th>Date</th><th>Disease</th><th>District</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>2025-10-18</td><td>PDSRU</td><td>Karachi South</td><td>Investigating</td></tr>
+              <tr><td>2025-10-14</td><td>PDSRU</td><td>Hyderabad</td><td>Verified</td></tr>
+              <tr><td>2025-10-11</td><td>PDSRU</td><td>Sukkur</td><td>Notified</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;text-align:right">
+      <a href="index.html" class="btn">Back to site</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const labels = ['2025-09-20','2025-09-27','2025-10-04','2025-10-11','2025-10-18'];
+    const data = [5,12,9,22,18];
+    const ctx = document.getElementById('mainChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type:'bar',
+      data:{labels, datasets:[{label:'Weekly cases',data,backgroundColor:'rgba(11,102,178,0.9)'}]},
+      options:{responsive:true,maintainAspectRatio:false}
+    });
+
+    document.getElementById('tblFilter').addEventListener('input', (e)=>{
+      const s = e.target.value.toLowerCase();
+      Array.from(document.querySelectorAll('#alertsTbl tbody tr')).forEach(tr=>{
+        tr.style.display = tr.innerText.toLowerCase().includes(s) ? '' : 'none';
+      });
+    });
+
+    document.getElementById('dashDist').addEventListener('change', (e)=>{
+      // simple demo: filter the table by district
+      const v = e.target.value.toLowerCase();
+      Array.from(document.querySelectorAll('#alertsTbl tbody tr')).forEach(tr=>{
+        const district = tr.cells[2].innerText.toLowerCase();
+        tr.style.display = (!v || district.includes(v)) ? '' : 'none';
+      });
+    });
+
+    document.getElementById('dashReload').addEventListener('click', ()=>{
+      // demo reload: randomize data
+      for(let i=0;i<data.length;i++) data[i]=Math.max(0, data[i]+Math.round((Math.random()-0.5)*10));
+      chart.update();
+    });
+  </script>
+</body>
+</html>

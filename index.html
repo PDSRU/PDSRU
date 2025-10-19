@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <meta name="description" content="PDSRU Sindh — provincial disease surveillance and response unit. Early detection, rapid response and public health resources for Sindh province." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230a7a3d'/%3E%3Ctext x='50' y='56' font-size='48' text-anchor='middle' fill='%23fff' font-family='Inter,Arial,Helvetica' font-weight='700'%3EP%3C/text%3E%3C/svg%3E" />
+  <title>PDSRU Sindh — Provincial Disease Surveillance & Response Unit</title>
+  <!-- Theme: Executive Minimal (clean, light, no gimmicks) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#hero" class="skip">Skip to content</a>
+  <!-- main header -->
+  <header>
+    <!-- Top utility bar -->
+    <div class="topbar" role="banner">
+      <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div style="font-size:13px;color:var(--muted)">Public health surveillance — Sindh</div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <a href="#contact" style="color:var(--muted);font-size:13px">Contact</a>
+            <a href="#dash-showcase" style="color:var(--muted);font-size:13px">Digital library</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap main-header">
+      <div class="brand">
+        <div class="crest" aria-hidden="true"></div>
+        <div style="margin-left:12px">
+          <div id="brand" class="org">PDSRU Sindh</div>
+          <div id="tag" class="tag">Provincial Disease Surveillance & Response Unit</div>
+        </div>
+      </div>
+
+      <nav id="mainNav" aria-label="Main navigation" class="mainnav">
+        <a href="#about">About</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#alerts">Alerts</a>
+        <a href="#resources">Resources</a>
+    <a href="#dash-showcase">Digital library</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="mobileSearchBtn" class="menu-btn" aria-label="Open search" title="Search" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6" fill="none"></circle><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="1.6"></line></svg>
+          <input id="h-search" type="search" placeholder="Search dashboards, reports…" aria-label="Search" />
+        </div>
+        <button class="btn primary" id="headerCta">Report a case</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- dashboard showcase moved: will be inserted below the hero section -->
+
+
+  <section class="wrap hero">
+    <div class="hero-grid">
+      <div style="text-align:left">
+        <h1 id="hero">Provincial Public Health Surveillance — Sindh</h1>
+        <p id="lead" style="margin-top:12px;max-width:68ch;color:var(--muted)">PDSRU integrates indicator‑based IDSR reporting, event‑based hotlines and laboratory confirmation to detect outbreaks early and coordinate a fast field response across Sindh.</p>
+        <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn primary" id="cta">Report a case</button>
+            <a class="btn" id="cta2" href="#alerts">View recent alerts</a>
+        </div>
+        <div class="mini-pie-wrap" style="margin:20px auto 6px;text-align:center">
+          <canvas id="miniPie" aria-label="Recent alerts distribution" style="width:280px;height:180px;display:block;margin:0 auto"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <div class="hd">This Week in Sindh</div>
+  <div class="bd">
+              <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+                <div id="visuals" style="flex:1 1 220px;min-width:220px">
+                  <!-- Placeholder shown first for a cleaner initial impression -->
+                  <div id="visualPlaceholder" style="width:100%;height:160px;border-radius:8px;background:linear-gradient(180deg,#f3f4f6,#ffffff);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700">
+                    <div style="text-align:center">
+                      <div style="font-size:14px;margin-bottom:6px">Weekly cases</div>
+                      <button id="loadVisuals" class="btn">Load visuals</button>
+                    </div>
+                  </div>
+                  <canvas id="weeklyChart" aria-label="Weekly cases chart" style="width:100%;height:160px;display:none"></canvas>
+                </div>
+                <div id="threeWrap" style="width:120px;height:120px;margin-left:8px;display:none"></div>
+              </div>
+            <div class="kpis">
+            <div class="kpi"><div class="k" id="k1">Suspected cases</div><div class="v">312</div></div>
+            <div class="kpi"><div class="k" id="k2">Confirmation rate</div><div class="v">24%</div></div>
+            <div class="kpi"><div class="k" id="k3">Active outbreaks</div><div class="v">6</div></div>
+            <div class="kpi"><div class="k" id="k4">Reporting timeliness</div><div class="v">91%</div></div>
+          </div>
+          <div style="margin-top:14px">
+            <div class="bars" aria-label="Weekly IDSR cases">
+              <div class="bar" style="--h:60"></div>
+              <div class="bar" style="--h:78"></div>
+              <div class="bar" style="--h:72"></div>
+              <div class="bar" style="--h:95"></div>
+              <div class="bar" style="--h:85"></div>
+              <div class="bar" style="--h:100"></div>
+            </div>
+            <div class="xlabels"><span>W27</span><span>W28</span><span>W29</span><span>W30</span><span>W31</span><span>W32</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PDSRU-style dashboard showcase (moved below hero) -->
+  <section id="dash-showcase" class="dash-showcase wrap" aria-labelledby="dashTitle">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs"><a href="#dash-showcase">Digital library</a> / <span>PDSRU Lab Surveillance Dashboard</span></nav>
+    <div class="dash-grid">
+      <main class="dash-main card">
+        <div class="dash-preview">
+          <div class="preview-left">
+            <div class="preview-thumb" aria-hidden="true">
+              <!-- Small inline SVG mock screenshot to make the tile look filled -->
+              <svg width="100%" height="100%" viewBox="0 0 360 200" preserveAspectRatio="xMidYMid slice" style="display:block;border-radius:8px;overflow:hidden">
+                <defs>
+                  <linearGradient id="g1" x1="0" x2="1">
+                    <stop offset="0%" stop-color="#f3f8fb" />
+                    <stop offset="100%" stop-color="#ffffff" />
+                  </linearGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#g1)" />
+                <!-- header bar (muted) -->
+                <rect x="12" y="12" width="336" height="28" rx="6" fill="#0b66b2" opacity="0.85" />
+                <text x="28" y="32" font-family="Inter,Arial" font-size="12" fill="#ffffff" font-weight="600">PDSRU Lab — surveillance</text>
+                <!-- left column stats (subtle) -->
+                <rect x="18" y="52" width="88" height="36" rx="6" fill="#0a7a3d" opacity="0.12" />
+                <rect x="18" y="96" width="200" height="64" rx="6" fill="#0b75c9" opacity="0.05" />
+                <!-- mini bars (soft greens) -->
+                <g fill="#0a7a3d" opacity="0.75">
+                  <rect x="230" y="80" width="8" height="28" rx="2" />
+                  <rect x="244" y="68" width="8" height="40" rx="2" />
+                  <rect x="258" y="88" width="8" height="20" rx="2" />
+                  <rect x="272" y="60" width="8" height="48" rx="2" />
+                  <rect x="286" y="72" width="8" height="36" rx="2" />
+                </g>
+                <!-- small table rows (muted gray) -->
+                <g fill="#334155" opacity="0.7">
+                  <rect x="18" y="168" width="64" height="8" rx="4" />
+                  <rect x="92" y="168" width="120" height="8" rx="4" />
+                  <rect x="218" y="168" width="110" height="8" rx="4" />
+                </g>
+              </svg>
+              <div class="preview-overlay">
+                <div class="preview-title">PDSRU LAB</div>
+                <div class="preview-sub">Interactive surveillance dashboard</div>
+                <a id="openDashLink" class="btn primary open-btn" href="./dashboard.html" target="_blank" rel="noopener">Open interactive dashboard</a>
+              </div>
+            </div>
+            <div style="margin-top:12px">
+              <canvas id="dashSampleChart" aria-label="Sample trend chart" style="width:100%;height:160px"></canvas>
+            </div>
+          </div>
+          <div class="preview-right">
+            <h1 id="dashTitle">PDSRU Lab Surveillance Dashboard</h1>
+            <p style="margin-top:8px;max-width:40ch;color:var(--muted)">A surveillance dashboard summarising recent laboratory-confirmed and suspected activity, trends and intelligence reports. Preview below or open the full interactive dashboard.</p>
+            <div class="stat-cards" style="margin-top:16px">
+              <div class="stat-card"><div class="s-label">Cases (30d)</div><div class="s-value">128</div></div>
+              <div class="stat-card"><div class="s-label">Positivity</div><div class="s-value">14%</div></div>
+              <div class="stat-card"><div class="s-label">Reports</div><div class="s-value">6</div></div>
+            </div>
+            
+            <div style="margin-top:12px">
+              <a class="btn" href="#resources">View intelligence reports</a>
+            </div>
+          </div>
+        </div>
+      </main>
+      <aside class="dash-aside">
+        <div class="card">
+          <div class="hd">Sign up for updates</div>
+          <div class="bd">
+            <p style="margin:0 0 10px 0;color:var(--muted)">Get email updates when new intelligence or dashboards are published.</p>
+            <form id="newsletter" onsubmit="return false;" style="display:flex;gap:8px;align-items:center">
+              <input type="email" id="newsEmail" placeholder="Email address" required />
+              <button class="btn primary" id="newsBtn">Sign up</button>
+            </form>
+            <div id="newsMsg" style="display:none;margin-top:8px;color:var(--brand)">Thanks — you are subscribed (demo).</div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <div class="hd">Additional links</div>
+          <div class="bd">
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <li><a href="#alerts">Recent alerts</a></li>
+              <li><a href="#resources">Resources & forms</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="team" class="wrap section">
+    <h2 style="margin-bottom:10px">Meet the team</h2>
+    <p style="margin:0 0 12px 0;color:var(--muted)">Core leadership and subject-matter experts at PDSRU Sindh.</p>
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="team-pic" id="pic-asif"><img src="./Assests/asif.PNG" alt="Dr Muhammad Asif Syed"></div>
+        <div class="team-info">
+          <h4>Dr Muhammad Asif Syed — Director</h4>
+          <p id="bio-asif">Dr. Muhammad Asif Syed is a public health / epidemiology expert in Sindh, Pakistan, affiliated with the provincial disease surveillance & response unit (PDSRU) under the Directorate General of Health Services (DGHS) in Sindh. He plays a leadership role in surveillance, outbreak investigation, and public-health research in the province.</p>
+        </div>
+      </div>
+      <div class="team-member">
+        <div class="team-pic" id="pic-fahad"><img src="./Assests/fahad.png" alt="Dr Fahad Memon"></div>
+        <div class="team-info">
+          <h4>Dr Fahad</h4>
+          <p id="bio-fahad">Dr Fahad Dr Fahad Ahmed Memon is a public-health professional working at the PDSRU in Sindh, Pakistan. He holds the fellowship of the Field Epidemiology & Laboratory Training Programme (FELTP) and serves in a leadership/support role (“Assistant Director / FETP Fellow”) in surveillance, outbreak investigation and response..</p>
+        </div>
+      </div>
+      <div class="team-member">
+        <div class="team-pic" id="pic-Asif_Channa"><img src="./Assests/asifchanna.png" alt="Dr Asif Channa"></div>
+        <div class="team-info">
+          <h4>Dr Asif Channa</h4>
+          <p id="bio-asifch">Dr Asif Channa supports surveillance and field response activities at PDSRU.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="wrap section">
+    <div class="twocol">
+      <div class="card">
+        <div class="hd">Mandate</div>
+        <div class="bd">
+          <p id="aboutp">PDSRU Sindh oversees disease intelligence and outbreak response province‑wide. We operate event‑based hotlines and media listening, supervise IDSR weekly reporting on DHIS2, coordinate public health labs, and engage One Health partners under IHR (2005).</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="hd">Hotline</div>
+        <div class="bd">
+          <div><strong>Phone:</strong> 0800‑XXXXXX</div>
+          <div><strong>Email:</strong> pdsru@sindh.gov.pk</div>
+          <div><strong>Address:</strong> Health Dept., Karachi · Hyderabad</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities" class="wrap section">
+    <h2 style="margin-bottom:10px">Core capabilities</h2>
+    <div class="programs">
+      <div class="card program"><h3>IDSR</h3><p>Weekly indicator reporting; thresholds, supervision, analysis & feedback.</p></div>
+      <div class="card program"><h3>Event‑based</h3><p>Hotline intake, media/social monitoring, verification, risk assessment.</p></div>
+      <div class="card program"><h3>Laboratory</h3><p>Specimen referral, confirmation networks, positivity trends.</p></div>
+      <div class="card program"><h3>Field Response</h3><p>RRT deployment with EOC partners; incident levels I–III.</p></div>
+    </div>
+  </section>
+
+  <section id="alerts" class="wrap section">
+    <div class="alerts-header" style="display:grid;grid-template-columns:1fr 320px 180px;gap:12px;align-items:center">
+      <h2 style="margin:0">Recent alerts</h2>
+      <input id="q" type="text" placeholder="Search disease, district, or status…" />
+      <select id="dist">
+        <option value="">All districts</option>
+        <option>Karachi East</option>
+        <option>Karachi South</option>
+        <option>Hyderabad</option>
+        <option>Jamshoro</option>
+        <option>Sukkur</option>
+        <option>Larkana</option>
+        <option>Shaheed Benazirabad</option>
+      </select>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <div class="bd" style="padding:0">
+        <div style="overflow:auto">
+          <table id="tbl">
+            <caption class="sr-only">Recent public health alerts in Sindh</caption>
+            <thead>
+              <tr><th scope="col">Date</th><th scope="col">Disease</th><th scope="col">District</th><th scope="col">Status</th><th scope="col">Level</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>2025‑10‑18</td><td>XDR Typhoid</td><td>Karachi South</td><td>Field response</td><td><span class="tag">II</span></td></tr>
+              <tr><td>2025‑10‑16</td><td>COVID‑19 cluster</td><td>Jamshoro</td><td>Notified</td><td><span class="tag">I</span></td></tr>
+              <tr><td>2025‑10‑14</td><td>Cholera</td><td>Sukkur</td><td>Contained</td><td><span class="tag">I</span></td></tr>
+              <tr><td>2025‑10‑13</td><td>Measles</td><td>Hyderabad</td><td>Verified</td><td><span class="tag">I</span></td></tr>
+              <tr><td>2025‑10‑12</td><td>Dengue</td><td>Karachi East</td><td>Investigating</td><td><span class="tag">I</span></td></tr>
+              <tr><td>2025‑10‑11</td><td>Dog‑bite cluster</td><td>Larkana</td><td>Investigating</td><td><span class="tag">I</span></td></tr>
+              <tr><td>2025‑10‑10</td><td>Chikungunya</td><td>Shaheed Benazirabad</td><td>Verified</td><td><span class="tag">I</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resources" class="wrap section">
+    <h2 style="margin-bottom:10px">Resources & forms</h2>
+    <div class="programs">
+      <div class="card program">
+        <h3>Weekly IDSR (W1)</h3>
+        <p>Standardized template for DHIS2 weekly disease surveillance reporting. Includes all priority diseases and core indicators for comprehensive monitoring.</p>
+        <button class="btn">
+          <svg style="width:16px;height:16px;margin-right:8px;vertical-align:-3px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Template
+        </button>
+      </div>
+      <div class="card program">
+        <h3>Outbreak Line List</h3>
+        <p>Comprehensive CSV/Excel format for detailed case-based outbreak reporting. Ensures standardized data collection across all districts.</p>
+        <button class="btn">
+          <svg style="width:16px;height:16px;margin-right:8px;vertical-align:-3px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Format
+        </button>
+      </div>
+      <div class="card program">
+        <h3>Incident Levels I–III</h3>
+        <p>Complete SOP for incident response activation and escalation protocols. Includes decision matrices and coordination frameworks.</p>
+        <button class="btn">
+          <svg style="width:16px;height:16px;margin-right:8px;vertical-align:-3px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download SOP
+        </button>
+      </div>
+  <!-- Upload Weekly Report card removed as requested -->
+    </div>
+  </section>
+
+  <section id="contact" class="wrap section">
+    <div class="twocol">
+      <div class="card">
+        <div class="hd">Contact</div>
+        <div class="bd">
+          <div><strong>Address:</strong> Directorate of Public Health, Govt. of Sindh</div>
+          <div><strong>Phone:</strong> +92‑21‑XXXXXXX</div>
+          <div><strong>Email:</strong> pdsru@sindh.gov.pk</div>
+          <div><strong>Website:</strong> www.pdsru.sindh.gov.pk</div>
+        </div>
+      </div>
+      <!-- Media / Inquiry card removed as requested -->
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;background:#fff">
+      <div>© <span id="y"></span> PDSRU Sindh. All rights reserved.</div>
+      <div><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Accessibility</a></div>
+    </div>
+  </footer>
+
+  <!-- Dashboard preview modal (iframe, lazy with fallback) -->
+  <div id="dashModal" class="modal-backdrop" style="display:none;align-items:center;justify-content:center;padding:12px">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="dashModalTitle" style="max-width:980px;width:100%;height:80vh;padding:0;display:flex;flex-direction:column">
+      <div class="hd" style="display:flex;align-items:center;justify-content:space-between">
+  <div style="padding:12px"><h3 id="dashModalTitle" style="margin:0">PDSRU dashboard — preview</h3></div>
+        <div style="padding:12px"><button id="closeDash" class="btn">Close</button></div>
+      </div>
+      <div class="bd" style="padding:0;flex:1;overflow:hidden;position:relative">
+        <!-- iframe is lazy-loaded via data-src to avoid preloading and allow fallback when blocked -->
+  <iframe id="dashFrame" data-src="./dashboard.html" title="PDSRU dashboard preview" style="border:0;width:100%;height:100%"></iframe>
+        <div id="dashFallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.95));padding:18px;display:flex">
+          <div style="max-width:560px;text-align:center">
+            <p style="margin:0 0 12px;color:var(--muted)">Preview blocked by the remote site or your browser. You can open the interactive dashboard in a new tab instead.</p>
+            <a id="dashOpenNew" class="btn primary" target="_blank" rel="noopener">Open in new tab</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Newsletter demo
+    // Mobile search toggle: shows input when user taps the search icon on small screens
+    (function(){
+      const btn = document.getElementById('mobileSearchBtn');
+      const body = document.body;
+      if(!btn) return;
+      btn.addEventListener('click', ()=>{
+        const open = body.classList.toggle('mobile-search-open');
+        if(open){ const input = document.getElementById('h-search'); input && input.focus(); }
+      });
+      // close on escape or click outside
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && body.classList.contains('mobile-search-open')) body.classList.remove('mobile-search-open'); });
+      document.addEventListener('click', (e)=>{ if(body.classList.contains('mobile-search-open')){
+        const inside = e.target.closest('.header-actions');
+        const isBtn = e.target.closest('#mobileSearchBtn');
+        if(!inside && !isBtn) body.classList.remove('mobile-search-open');
+      }});
+    })();
+
+    // Search wrap expand/collapse behaviour (polish for mobile)
+    (function(){
+      const wrap = document.querySelector('.search-wrap');
+      const input = document.getElementById('h-search');
+      if(!wrap || !input) return;
+      function expand(){ wrap.classList.add('expanded'); }
+      function collapse(){ if(!input.value.trim()) wrap.classList.remove('expanded'); }
+      input.addEventListener('focus', expand);
+      input.addEventListener('input', ()=>{ if(input.value.trim()) wrap.classList.add('expanded'); });
+      input.addEventListener('blur', collapse);
+      // allow Esc to blur and collapse
+      input.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ input.blur(); } });
+      // when the search icon button is clicked, focus input (keeps behavior consistent)
+      const sbtn = document.getElementById('mobileSearchBtn');
+      sbtn && sbtn.addEventListener('click', ()=>{ setTimeout(()=>input.focus(), 60); });
+    })();
+
+    (function(){
+      const form = document.getElementById('newsletter');
+      const email = document.getElementById('newsEmail');
+      const msg = document.getElementById('newsMsg');
+      const btn = document.getElementById('newsBtn');
+      if(form && email && btn && msg){
+        form.addEventListener('submit', ()=>{
+          const v = email.value.trim();
+          if(!v || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ alert('Please enter a valid email'); email.focus(); return; }
+          btn.disabled = true; btn.textContent = 'Subscribing...';
+          setTimeout(()=>{ btn.disabled=false; btn.textContent='Sign up'; msg.style.display='block'; email.value=''; }, 800);
+        });
+      }
+    })();
+
+    // Dashboard preview modal (lazy-load iframe + fallback)
+    (function(){
+      const openBtn = document.getElementById('openDash');
+      const modal = document.getElementById('dashModal');
+      const close = document.getElementById('closeDash');
+      const frame = document.getElementById('dashFrame');
+      const fallback = document.getElementById('dashFallback');
+      const openNew = document.getElementById('dashOpenNew');
+      if(!openBtn || !modal || !frame) return;
+
+      function show(){
+        // lazy-load iframe src only when opening
+        if(!frame.getAttribute('src')){
+          const src = frame.getAttribute('data-src');
+          frame.setAttribute('src', src);
+          openNew && openNew.setAttribute('href', src);
+          // if iframe fails to load (for example due to X-Frame-Options), show fallback after timeout
+          const t = setTimeout(()=>{
+            let blocked = false;
+            try{
+              // trying to access contentWindow.location will throw if cross-origin or blocked
+              const cw = frame.contentWindow;
+              // If contentWindow exists but location is 'about:blank' it may still be loading - still allow some time
+              if(!cw || cw.location === null){ blocked = true; }
+            }catch(e){ blocked = true; }
+            if(blocked){ frame.style.display='none'; fallback.style.display='flex'; }
+            clearTimeout(t);
+          }, 1800);
+        }
+        modal.style.display='flex'; document.body.style.overflow='hidden';
+      }
+
+      function hide(){ modal.style.display='none'; document.body.style.overflow='';
+        // cleanup: hide fallback and show frame for next time
+        if(fallback) fallback.style.display='none'; if(frame) frame.style.display='block';
+      }
+
+      openBtn.addEventListener('click', show);
+      close && close.addEventListener('click', hide);
+      modal.addEventListener('click', (e)=>{ if(e.target===modal) hide(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal.style.display==='flex') hide(); });
+    })();
+  </script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // Contact form validation and success message (only when elements exist)
+    (function(){
+      const sendBtn = document.getElementById('send');
+      const nameEl = document.getElementById('contact-name');
+      const emailEl = document.getElementById('contact-email');
+      const msgEl = document.getElementById('contact-msg');
+      const sentEl = document.getElementById('sent');
+      if(!sendBtn || !nameEl || !emailEl || !msgEl || !sentEl) return; // form removed or incomplete
+      sendBtn.addEventListener('click', ()=>{
+        const name = nameEl.value.trim();
+        const email = emailEl.value.trim();
+        const msg = msgEl.value.trim();
+        if(!name){ alert('Please enter your name'); nameEl.focus(); return; }
+        if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert('Please enter a valid email'); emailEl.focus(); return; }
+        if(!msg){ alert('Please enter a message'); msgEl.focus(); return; }
+        sentEl.style.display='block';
+        // In a real site, here we would POST to a server endpoint.
+      });
+    })();
+
+    const q = document.getElementById('q');
+    const dist = document.getElementById('dist');
+    
+    function applyFilter() {
+      const s = (q?.value || '').toLowerCase();
+      const d = (dist?.value || '').toLowerCase();
+      
+      // Handle both table rows and cards
+      const rows = Array.from(document.querySelectorAll('#tbl tbody tr'));
+      const cards = Array.from(document.querySelectorAll('.alert-card'));
+      
+      if (window.matchMedia('(max-width:600px)').matches) {
+        // Filter cards on mobile
+        cards.forEach(card => {
+          const cardText = card.innerText.toLowerCase();
+          card.style.display = (!s || cardText.includes(s)) && (!d || cardText.includes(d)) ? '' : 'none';
+        });
+      } else {
+        // Filter table rows on desktop
+        rows.forEach(row => {
+          const rowText = row.innerText.toLowerCase();
+          row.style.display = (!s || rowText.includes(s)) && (!d || rowText.includes(d)) ? '' : 'none';
+        });
+      }
+    }
+    
+    if(q) q.addEventListener('input', applyFilter);
+    if(dist) dist.addEventListener('change', applyFilter);
+
+    // Site is English-only; bilingual code removed.
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mainNav = document.getElementById('mainNav');
+    menuBtn && menuBtn.addEventListener('click', ()=>{
+      const open = mainNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      // Focus first link inside nav to avoid jumping/odd rendering on mobile
+      if(open){
+        const firstLink = mainNav.querySelector('a');
+        firstLink && firstLink.focus();
+      }
+    });
+
+    // Report a Case modal (simple accessible dialog)
+    const cta = document.getElementById('cta');
+    const body = document.body;
+    // create modal markup
+    const backdrop = document.createElement('div'); backdrop.className='modal-backdrop'; backdrop.id='modalBackdrop';
+    backdrop.innerHTML = `
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="hd"><div style="padding:16px"><h3 id="modalTitle">Report a Case</h3></div></div>
+        <div class="bd" style="padding:16px;display:grid;gap:10px">
+          <label class="sr-only" for="r-name">Name</label>
+          <input id="r-name" placeholder="Reporter name" />
+          <label class="sr-only" for="r-phone">Phone / Email</label>
+          <input id="r-phone" placeholder="Phone or email" />
+          <label class="sr-only" for="r-details">Details</label>
+          <textarea id="r-details" placeholder="Brief details (what, when, where)"></textarea>
+          <div style="display:flex;gap:8px;justify-content:flex-end">
+            <button class="btn" id="r-cancel">Cancel</button>
+            <button class="btn primary" id="r-submit">Submit</button>
+          </div>
+        </div>
+      </div>`;
+    body.appendChild(backdrop);
+
+    function openModal(){ backdrop.classList.add('show'); backdrop.querySelector('.modal').classList.add('show'); backdrop.querySelector('#r-name').focus(); }
+    function closeModal(){ backdrop.classList.remove('show'); backdrop.querySelector('.modal').classList.remove('show'); cta.focus(); }
+    cta?.addEventListener('click', openModal);
+    backdrop.addEventListener('click', (e)=>{ if(e.target===backdrop) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && backdrop.classList.contains('show')) closeModal(); });
+    backdrop.addEventListener('click', (e)=>{
+      if(e.target && e.target.id==='r-cancel') closeModal();
+      if(e.target && e.target.id==='r-submit'){
+        // very small client-side check
+        const details = backdrop.querySelector('#r-details').value.trim();
+        if(!details){ alert('Please provide brief details'); backdrop.querySelector('#r-details').focus(); return; }
+        closeModal();
+        alert('Thank you — the report has been recorded (demo).');
+      }
+    });
+  </script>
+  <script>
+    // Header hide on scroll: hide when scrolling down, show when scrolling up.
+    (function(){
+      const WIN = window;
+      const DOC = document;
+      const BODY = DOC.body;
+      let lastY = WIN.scrollY || WIN.pageYOffset || 0;
+      let ticking = false;
+      const MIN_SCROLL_TO_HIDE = 48; // px scrolled down before hiding
+
+      function onScroll(){
+        if(!ticking){
+          WIN.requestAnimationFrame(()=>{
+            const y = WIN.scrollY || WIN.pageYOffset || 0;
+            const delta = y - lastY;
+            // scrolling down and beyond threshold -> hide
+            if(delta > 6 && y > MIN_SCROLL_TO_HIDE){ BODY.classList.add('header-hidden'); }
+            // scrolling up -> show
+            else if(delta < -6 || y <= MIN_SCROLL_TO_HIDE){ BODY.classList.remove('header-hidden'); }
+            lastY = y;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      // attach on all viewports so mobile can also hide the header on scroll
+      function shouldAttach(){ return true; }
+
+      function bind(){ WIN.addEventListener('scroll', onScroll, {passive:true}); }
+      function unbind(){ WIN.removeEventListener('scroll', onScroll); BODY.classList.remove('header-hidden'); }
+
+      // bind on load
+      bind();
+      // rebind on resize changes across breakpoints
+      WIN.addEventListener('resize', ()=>{
+        setTimeout(()=>{ unbind(); bind(); }, 160);
+      });
+    })();
+  </script>
+  <script>
+    // Convert alerts table rows to card list on small screens for better readability and tap targets
+    (function(){
+      const tbl = document.getElementById('tbl');
+      if(!tbl) return;
+      
+      // Initial call to applyFilter to handle any existing search/filter
+      setTimeout(() => {
+        if(window.applyFilter) window.applyFilter();
+      }, 100);
+      
+      function makeCards(){
+        // if not small screen, restore table visibility
+        if(!(window.matchMedia && window.matchMedia('(max-width:600px)').matches)){
+          const wrapper = document.querySelector('#tbl').closest('.card');
+          const cards = wrapper.querySelector('.alerts-cards');
+          if(cards){ cards.remove(); wrapper.querySelector('.bd').style.display = ''; tbl.style.display = 'table'; }
+          return;
+        }
+        const wrapper = document.querySelector('#tbl').closest('.card');
+        if(!wrapper) return;
+        // avoid recreating
+        if(wrapper.querySelector('.alerts-cards')) return;
+        const rows = Array.from(tbl.tBodies[0].rows);
+        const cardsWrap = document.createElement('div');
+        cardsWrap.className = 'alerts-cards';
+        rows.forEach(r=>{
+          const cells = Array.from(r.cells).map(c=>c.innerText.trim());
+          const card = document.createElement('article'); 
+          card.className = 'alert-card';
+          card.innerHTML = `
+            <div class="title">${cells[1] || ''}</div>
+            <div class="location">${cells[2] || ''}</div>
+            <div class="date">${cells[0] || ''}</div>
+            <div class="meta">
+              <span class="status">${cells[3] || ''}</span>
+              <span class="level">Level ${cells[4] || ''}</span>
+            </div>
+          `;
+          cardsWrap.appendChild(card);
+        });
+        // hide table and insert cards
+        tbl.style.display = 'none';
+        wrapper.querySelector('.bd').style.display = 'block';
+        wrapper.querySelector('.bd').insertBefore(cardsWrap, wrapper.querySelector('.bd').firstChild);
+      }
+      // run on load and resize
+      makeCards();
+      window.addEventListener('resize', ()=>{ setTimeout(makeCards, 120); });
+    })();
+  </script>
+  <script>
+    // Anchor flash helper: when navigating to an in-page anchor, briefly add a highlight class
+    (function(){
+      function flashTarget(el){
+        if(!el) return; el.classList.remove('anchor-flash');
+        // force reflow to restart animation
+        void el.offsetWidth;
+        el.classList.add('anchor-flash');
+        // remove after animation completes
+        setTimeout(()=>el.classList.remove('anchor-flash'), 2400);
+      }
+
+      // handle clicks on same-page links
+      document.addEventListener('click', (e)=>{
+        const a = e.target.closest('a[href^="#"]');
+        if(!a) return; const hash = a.getAttribute('href'); if(!hash || hash==='#') return;
+        const target = document.querySelector(hash);
+        if(target){ // flash after a tiny delay to allow smooth scroll
+          setTimeout(()=>flashTarget(target), 350);
+        }
+      });
+
+      // handle direct load with hash
+      if(window.location.hash){ const t = document.querySelector(window.location.hash); if(t) setTimeout(()=>flashTarget(t), 350); }
+    })();
+  </script>
+  <!-- Charts and 3D visuals (CDN) -->
+  <script>
+    // Dynamic script loader
+    function loadScript(src){
+      return new Promise((resolve, reject)=>{
+        const s = document.createElement('script'); s.src = src; s.async = true;
+        s.onload = ()=>resolve(); s.onerror = ()=>reject(new Error('Failed to load '+src));
+        document.head.appendChild(s);
+      });
+    }
+
+    // Chart initialization (lazy)
+    async function initChart(){
+      const ctxEl = document.getElementById('weeklyChart');
+      if(!ctxEl) return;
+      try{
+        if(typeof Chart === 'undefined'){
+          await loadScript('https://cdn.jsdelivr.net/npm/chart.js');
+        }
+        const labels = ['W27','W28','W29','W30','W31','W32'];
+        const data = [60,78,72,95,85,100];
+        ctxEl.style.display = '';
+        document.getElementById('visualPlaceholder')?.remove();
+        new Chart(ctxEl.getContext('2d'), {
+          type: 'bar',
+          data: { labels: labels, datasets: [{ label: 'Cases', data: data, backgroundColor: 'rgba(10,122,61,0.9)', borderRadius:6, barPercentage:0.6 }]},
+          options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{x:{grid:{display:false}}, y:{beginAtZero:true}} }
+        });
+      }catch(e){ console.warn('Chart load failed', e); }
+    }
+
+    // Mini pie showing disease distribution from alerts table
+    async function initMiniPie(){
+      const pieEl = document.getElementById('miniPie');
+      if(!pieEl) return;
+      try{
+        if(typeof Chart === 'undefined'){
+          await loadScript('https://cdn.jsdelivr.net/npm/chart.js');
+        }
+        // Aggregate diseases from table rows
+        const rows = Array.from(document.querySelectorAll('#tbl tbody tr'));
+        const counts = {};
+        rows.forEach(r=>{ const disease = r.cells[1]?.innerText.trim() || 'Other'; counts[disease] = (counts[disease]||0)+1; });
+        const labels = Object.keys(counts);
+        const data = labels.map(l=>counts[l]);
+        new Chart(pieEl.getContext('2d'), {
+          type: 'doughnut',
+          data: { labels, datasets:[{ data, backgroundColor: ['#0a7a3d','#0b75c9','#f59e0b','#ef4444','#6366f1','#10b981']}]},
+          options:{
+            plugins:{legend:{display:true,position:'bottom',labels:{boxWidth:14,font:{size:12}}}},
+            maintainAspectRatio:true,
+            cutout:'35%'
+          }
+        });
+      }catch(e){ console.warn('MiniPie failed', e); }
+    }
+
+    // Three.js initialization (lazy)
+    async function initThree(){
+      const wrap = document.getElementById('threeWrap');
+      if(!wrap) return;
+      if(window.matchMedia && window.matchMedia('(max-width:600px)').matches) { wrap.style.display='none'; return; }
+      try{
+        if(typeof THREE === 'undefined'){
+          await loadScript('https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js');
+        }
+        wrap.style.display = '';
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, wrap.clientWidth / wrap.clientHeight, 0.1, 100);
+        const renderer = new THREE.WebGLRenderer({ alpha:true, antialias:true });
+        renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio || 1);
+        wrap.appendChild(renderer.domElement);
+        const geometry = new THREE.SphereGeometry(1, 32, 32);
+        const material = new THREE.MeshStandardMaterial({ color:0x0a7a3d, metalness:0.2, roughness:0.6 });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+        const light = new THREE.DirectionalLight(0xffffff, 0.9); light.position.set(5,5,5); scene.add(light);
+        const amb = new THREE.AmbientLight(0xffffff, 0.4); scene.add(amb);
+        camera.position.set(0,0,3);
+        function onResize(){ renderer.setSize(wrap.clientWidth, wrap.clientHeight); camera.aspect = wrap.clientWidth / wrap.clientHeight; camera.updateProjectionMatrix(); }
+        window.addEventListener('resize', onResize);
+        let t=0;
+        function animate(){ t+=0.01; sphere.rotation.y = t; sphere.rotation.x = Math.sin(t/3)*0.2; renderer.render(scene, camera); requestAnimationFrame(animate); }
+        animate();
+      }catch(e){ wrap.style.display='none'; console.warn('Three failed', e); }
+    }
+
+    // Wire Load visuals button and auto-load when visuals enter viewport
+    (function(){
+      const btn = document.getElementById('loadVisuals');
+      const visuals = document.getElementById('visuals');
+      let loaded=false;
+  async function loadAll(){ if(loaded) return; loaded=true; await Promise.all([initChart(), initThree(), initMiniPie()]); }
+      if(btn) btn.addEventListener('click', loadAll);
+      // Auto-load when placeholder scrolls into view (but only once)
+      if('IntersectionObserver' in window && visuals){
+        const obs = new IntersectionObserver((entries, o)=>{
+          entries.forEach(e=>{ if(e.isIntersecting){ loadAll(); o.disconnect(); } });
+        },{rootMargin:'200px'});
+        obs.observe(visuals);
+      }
+    })();
+    
+      // Sample Chart for dashboard preview (lazy)
+      (async function(){
+        const el = document.getElementById('dashSampleChart');
+        if(!el) return;
+        try{
+          if(typeof Chart === 'undefined') await loadScript('https://cdn.jsdelivr.net/npm/chart.js');
+          const ctx = el.getContext('2d');
+          new Chart(ctx, {
+            type:'line',
+            data:{labels:['-6w','-5w','-4w','-3w','-2w','-1w'],datasets:[{label:'Cases',data:[12,18,22,16,28,24],borderColor:'rgba(10,122,61,0.95)',backgroundColor:'rgba(10,122,61,0.08)',tension:0.3}]},
+            options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}
+          });
+        }catch(e){console.warn('Sample chart failed',e)}
+      })();
+  </script>
+  </body>
+  </html>
+
+
+
+
